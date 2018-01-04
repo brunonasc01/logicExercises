@@ -1,0 +1,40 @@
+package br.com.algorithm;
+
+import java.util.Scanner;
+
+public class MatrixSumDifference {
+
+	   static int diagonalDifference(int[][] a) {
+	        int difference = 0;
+	        int pd = 0;
+	        int sd = 0;
+	        for(int x = 0; x < a.length; x++){
+	            for(int y = 0; y < a.length; y++){
+	                if(x == y){
+	                    pd += a[x][y];
+	                }
+	                
+	                if(y == (a.length - (1+x))) {
+	                    sd += a[x][y];
+	                }
+	            }
+	        }
+	        
+	        return Math.abs(pd - sd);
+	    }
+
+	    public static void main(String[] args) {
+	        Scanner in = new Scanner(System.in);
+	        int n = in.nextInt();
+	        int[][] a = new int[n][n];
+	        for(int a_i = 0; a_i < n; a_i++){
+	            for(int a_j = 0; a_j < n; a_j++){
+	                a[a_i][a_j] = in.nextInt();
+	            }
+	        }
+	        int result = diagonalDifference(a);
+	        System.out.println(result);
+	        in.close();
+	    }
+
+}
