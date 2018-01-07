@@ -1,5 +1,6 @@
 package br.com.algorithm;
 
+//Longest Common Subsequence
 public class Lcs {
 
 	/* Returns length of LCS for X[0..m-1], Y[0..n-1] */

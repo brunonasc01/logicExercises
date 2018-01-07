@@ -1,0 +1,4 @@
+Note that the time complexity of the above Dynamic Programming (DP) solution is O(n^2) and there is a O(nLogn) solution for the LIS problem.
+We have not discussed the O(n Log n) solution here as the purpose of this post is to explain Dynamic Programming with a simple example. See below post for O(n Log n) solution.
+
+irstly one would need to define what more efficient means, does it mean quicker, uses less system resources (such as memory) etc... (these factors are sometimes mutually exclusive)
