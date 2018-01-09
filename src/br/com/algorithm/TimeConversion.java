@@ -1,31 +1,30 @@
 package br.com.algorithm;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.Scanner;
 
 public class TimeConversion {
 
-    static String timeConversion(String s) throws Exception {
-        
-        DateFormat dateFormat = new SimpleDateFormat("HH:mm:ssaa");
-        Date date = dateFormat.parse(s);
-        
-        Calendar cal = Calendar.getInstance();
-        cal.setTime(date);
-        
-        if(s.contains("PM")){
-        	cal.set(Calendar.HOUR, cal.get(Calendar.HOUR)+12);
+    static String timeConversion(String s) {
+        String[] splitDate = s.split(":");
+
+        String ampm = splitDate[splitDate.length-1].substring(2);
+        splitDate[2] = splitDate[2].substring(0,2);
+
+        int hour = Integer.valueOf(splitDate[0]);
+        int minute = Integer.valueOf(splitDate[1]);
+        int second = Integer.valueOf(splitDate[2]);
+
+        if(ampm.equals("PM") && hour != 12){
+        	hour = hour + 12;
         }
-        
-        DateFormat format24 = new SimpleDateFormat("HH:mm:ss");
-        
-        return format24.format(cal.getTime());
+        else if(ampm.equals("AM") && hour == 12){
+        	hour = 0;
+        }
+
+        return String.format("%02d:%02d:%02d",hour,minute,second);
     }
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         String s = in.next();
         String result = timeConversion(s);
